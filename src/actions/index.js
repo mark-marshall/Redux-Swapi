@@ -16,12 +16,12 @@ export const FAILURE = "FAILURE";
 export const getCharacters = () => dispatch => {
     dispatch({ type: FETCHING });
     axios
-    .get('https://swapi.co/api/people')
+    .get('https://swapi.co/api/people//')
     .then(resp => {
         console.log(resp.data.results);
         dispatch({ type: SUCCESS, payload: resp.data.results });
     })
     .catch(err => {
-        dispatch({ type: FAILURE, payload: err });
+        dispatch({ type: FAILURE, payload: err.message });
     })
 };
